@@ -82,7 +82,7 @@ test('Q6: 著者「高橋」で絞り込むと2件になる', async ({ page }) =
 test('Q7: 著者・メモを入力して書籍を追加できる', async ({ page }) => {
   // TODO: BookModal.selectAuthor() と BookModal.fillNote() を実装済み
   // Arrange: addBookButton をクリック
-  await page.getByTestId('add-book-btn').click();
+  await bookPage.addBookButton.click();
   // Act: タイトル、ジャンル、著者、メモを入力して保存
   await bookModal.fillTitle('test-bookタイトル');
   await bookModal.selectGenre('manga');
@@ -102,7 +102,7 @@ test('Q7: 著者・メモを入力して書籍を追加できる', async ({ page
 test('Q8: 評価・ページ数を設定して書籍を追加できる', async ({ page }) => {
   // TODO: BookModal.selectRating() と BookModal.fillPages() を実装済み
   // Arrange: addBookButton をクリック
-  await page.getByTestId('add-book-btn').click();
+  await bookPage.addBookButton.click();
   // Act: タイトル、評価、ページ数を入力して保存
   await bookModal.fillTitle('test-bookタイトル2');
   await bookModal.selectRating(4);
@@ -121,7 +121,7 @@ test('Q8: 評価・ページ数を設定して書籍を追加できる', async (
 test('Q9: ウィッシュリスト保存するとステータスが「未読」になる', async ({ page }) => {
   // TODO: BookModal.saveWishlist() を実装済み
   // Arrange: addBookButton をクリック
-  await page.getByTestId('add-book-btn').click();
+  await bookPage.addBookButton.click();
   // Act: タイトルを入力して saveWishlist() で保存
   await bookModal.fillTitle('test-bookタイトル3');
   await bookModal.saveWishlist();
@@ -157,7 +157,7 @@ test('Q11: 著者「unknown」で絞り込むと著者未設定の書籍が表�
 test('Q12: メモ付きで書籍を追加し、一覧でメモが表示される', async ({ page }) => {
   // TODO: BookModal.fillNote() と BookPage.getBookNote() を実装済み
   // Arrange: addBookButton をクリック
-  await page.getByTestId('add-book-btn').click();
+  await bookPage.addBookButton.click();
   // Act: タイトル・メモを入力して保存
   await bookModal.fillTitle('test-bookタイトル4');
   await bookModal.fillNote('メモテスト');
@@ -173,7 +173,7 @@ test('Q12: メモ付きで書籍を追加し、一覧でメモが表示される
 test('Q13: 著者・評価・ページ数を全て設定して追加できる', async ({ page }) => {
   // TODO: BookModal の selectAuthor, selectRating, fillPages を全て実装してから使用
   // Arrange: addBookButton をクリック
-  await page.getByTestId('add-book-btn').click();
+  await bookPage.addBookButton.click();
   // Act: タイトル、著者、評価、ページ数を入力して保存
   await bookModal.fillTitle('test-bookタイトル');
   await bookModal.selectAuthor('中村');
@@ -195,7 +195,7 @@ test('Q13: 著者・評価・ページ数を全て設定して追加できる', 
 test('Q14: 書籍名を空のまま保存するとエラーが表示される', async ({ page }) => {
   // このテストは提供済みのメソッドだけで実装可能です
   // Arrange: addBookButton をクリック
-  await page.getByTestId('add-book-btn').click();
+  await bookPage.addBookButton.click();
   // Act: タイトルを空のまま save()
   await bookModal.fillTitle('');
   await bookModal.save();
@@ -208,7 +208,7 @@ test('Q14: 書籍名を空のまま保存するとエラーが表示される', 
 test('Q15: ウィッシュリスト保存後、ステータスが「未読」で評価も保持される', async ({ page }) => {
   // TODO: BookModal.saveWishlist() と BookModal.selectRating() を実装済み
   // Arrange: addBookButton をクリック
-  await page.getByTestId('add-book-btn').click();
+  await bookPage.addBookButton.click();
   // Act: タイトル・評価を入力して saveWishlist() で保存
   await bookModal.fillTitle('test-bookタイトル1234');
   await bookModal.selectRating(5);
